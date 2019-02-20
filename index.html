@@ -11,22 +11,5 @@
 </head>
 <body>
     
-
-<script>
-    const endpoint = 'https://api.edamam.com/search?app_id=453b0ce7&app_key=1bef89ed0b34f36699e6d68f1882bf4a&q=chicken'
-    fetch(endpoint)
-    .then(obj => obj.json())
-    .then(data => {
-       /*  console.log(data.hits) */
-        data.hits.forEach(object =>{
-            console.log(object.recipe.ingredients)
-            
-            
-        })
-	
-    })
-
-</script>
-    
 </body>
 </html>
