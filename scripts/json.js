@@ -1,5 +1,6 @@
+/*jshint esversion: 6 */
 const wines = {
-    reds = [
+    reds: [
         wineOne = {
             name: 'Prélude du Château Haut-Pezat 2014',
             id: 1,
@@ -28,7 +29,7 @@ const wines = {
         },
 
     ],
-    whites = [
+    whites: [
         wineOne = {
             name: 'Louis Jadot Chablis 2015',
             id: 4,
@@ -57,4 +58,4 @@ const wines = {
         },
 
     ]
-}
+};
