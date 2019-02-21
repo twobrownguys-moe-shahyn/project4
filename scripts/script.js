@@ -6,7 +6,7 @@ myApp = {};
 
 myApp.getRecipes = function (queryString) {
     return $.ajax({
-        url: `http://api.yummly.com/v1/api/recipes?_app_id=YOUR_ID&_app_key=YOUR_APP_KEY&q=onion+soup`,
+        url: `http://api.yummly.com/v1/api/recipes/`,
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -14,13 +14,14 @@ myApp.getRecipes = function (queryString) {
             'X-Yummly-App-Key': '5944b972a9f51cf045008ace83d83548'
         },
         data: {
+            q: 
             requirePictures: true
-        },
+        }
+
     }).then(function(result) {
         myApp.displayRecipes(result.foodRecipes);
         console.log(result);
     });
-
 
 };
 
