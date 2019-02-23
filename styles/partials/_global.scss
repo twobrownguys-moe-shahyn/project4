@@ -1,0 +1,58 @@
+.visuallyHidden:not(:focus):not(:active) {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.skip-link {
+    position: absolute;
+    left: -1000px;
+    top: 5px;
+    z-index: 999;
+    background: white;
+    color: black;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+html {
+    font-size: 125%;
+}
+
+body {
+    font-size: 1rem;
+    margin: 0;
+}
+h1,
+h2,
+h3 {
+    letter-spacing: 2;
+}
+p {
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.innerWrapper {
+    width: 100%;
+    max-width: 1600px;
+    padding: 1px;
+    margin: 0 auto; 
+}
+
+.bold {
+    font-weight: bold;
+}

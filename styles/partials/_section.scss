@@ -1,0 +1,71 @@
+
+// RECIPES LIST section//
+
+// 'Previous' and 'Next' buttons //
+
+.navButtons {
+    text-align: center;
+    padding: 50px;
+}
+
+// Recipes //
+
+.recipesContainer {
+    margin: 0 auto;
+}
+
+.recipes {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    .recipeBox {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 25%;
+        justify-content: center;
+        padding: 20px 20px;
+
+        a {
+            font-weight: bold;
+        }
+    }
+}
+
+.recipeBox img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+
+// SELECTED RECIPE section//
+
+.singleRecipeContainer {
+    background: beige;
+
+}
+
+.showRecipe {
+        text-align: center;
+
+
+        .recipeImg {
+            width: 50%;
+            border-radius: 20px;
+        }
+    }
+.recipeDetails {
+    padding-left: 50px;
+}
+
+li {
+    padding: 2px;
+    width: 100%;
+}
+
+li:nth-child(2n) {
+    list-style-type: none;
+}
+
+
+//PAIRED WINES section//
