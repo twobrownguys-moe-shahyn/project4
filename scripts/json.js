@@ -28,10 +28,7 @@ const wines = {
             pairing: 'Lamb',
             link: 'http://www.lcbo.com/lcbo/product/chateau-haut-brion-2000/578716#.XG3P4-hKjIU',
             image: 'http://www.lcbo.com/content/dam/lcbo/products/578716.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
-            
-
         },
-
     ],
     whites: [
         wineOne = {
@@ -49,7 +46,6 @@ const wines = {
             desc: 'Sancerre is a royal wine. It used the be the favorite wine of french aristocrats!',
             pairing: 'salad',
             link: 'http://www.lcbo.com/lcbo/product/domaine-bonnard-sancerre-2016/140525#.XG3SLehKjIU',
-
         },
         wineThree = {
             name: 'Stags Leap Winery Chardonnay 2016',
@@ -58,8 +54,6 @@ const wines = {
             desc: 'heavy dishes require heavy wines and nobody does it better than Stags leap! This wine is strong enough to accompany a heavy butter sauce',
             pairing: 'chicken',
             link: 'http://www.lcbo.com/lcbo/product/stags-leap-winery-chardonnay-2016/655381#.XG3Tp-hKjIU',
-
         },
-
     ]
 };

@@ -9,39 +9,84 @@
         crossorigin="anonymous">
     <link href="" rel="stylesheet">
     <link rel="icon" type="image/png" href="" sizes="">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CSatisfy" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <title>Wine Pairing App</title>
 </head>
 <body>    
     <a href="#main-content" class="skip-link">Skip to main content.</a>
-    <button class="button" value='chicken'>chicken</button>
-    <button class="button" value='beef'>beef</button>
-    <button class="button" value='pork'>pork</button>
-    <button class="next">More Items</button>
+    <header class="landingPage">
+        <div class="innerWrapper">
+            <div class="appDescription">
+                <h1>Wine and Dine Me</h1>
+                <h2>The Wine-Pairing App</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque quam, veniam impedit ducimus
+                    temporibus
+                    id recusandae vero quia reiciendis voluptate eius perspiciatis eveniet cupiditate debitis, commodi
+                    deserunt, neque non tempora!
+                </p>
+            </div>
+                <div class="buttonList">
+                    <button class="button" value='chicken'>chicken</button>
+                    <button class="button" value='beef'>beef</button>
+                    <button class="button" value='lamb'>lamb</button>
+                    <button class="button" value='pork'>pork</button>
+                    <button class="button" value='salmon'>salmon</button>
+                    <button class="button" value='tuna'>tuna</button>
+                    <button class="button" value='calamari'>calamari</button>
+                    <button class="button" value='tofu'>tofu</button>
+                </div>
+            </div>
+    </header>
     <main>
-        <section>
-            <div class="recipes">
+        <section class="recipesListSection">
+            <div class="innerWrapper">
+                <div class="navButtons">
+                    <button class="previousPage" value='previousPage'>Previous Page</button>
+                    <button class="next" value='next'>Next Page</button>
+                </div>
+                <div class="recipesContainer">
+                    <div class="recipes">
 
+                    </div>
+                </div>
             </div>
         </section>
+        <section class="red">
+            <div class="innerWrapper">
+                <div class="singleRecipeContainer">
+                    <div class="showRecipe"></div>
+                </div>
+            </div>
         <section>
-            <div class="showRecipe">
+            <div class="innerWrapper">
+                <div class="recipeDetails">
+                    <h3>Ingredients</h3>
+                    <ul class="listIngredients">
+                    </ul>
+                </div>
             </div>
-            <div class="recipeList">
-                <ul class="listItems">
-                </ul>
-            </div>
+        </section>
+            <div class="link&pairButtons"></div>  
         </section>
         <section>
             <div class="showWine">
-                
+        
             </div>
         </section>
     </main>
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
-    <script src="scripts/json.js"></script>
-    <script src="scripts/script.js"></script>
 
-
+    <footer>
+        <div class="innerWrapper">
+            <div class="copyrightContainer">
+                <p>Copyright <span>&copy;</span> Two Brown Guys 2019</p>
+                </copyrightContainer>
+            </div>
+    </footer>
+    <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
+        crossorigin='anonymous'></script>
+        <script src="scripts/script.js"></script>
+        <script src="scripts/json.js"></script>
 </body>
 </html>
+
