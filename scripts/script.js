@@ -5,6 +5,38 @@ const apiKey = `5944b972a9f51cf045008ace83d83548`;
 const endpoint = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
 
 
+myApp.firstScroll = () =>{
+    $(".button").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".recipesListSection").offset().top
+            },
+            'slow');
+    });
+}
+
+myApp.secondScroll = () =>{
+    $(".recipeBox").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".singleRecipeContainer").offset().top
+            },
+            'slow');
+    });
+}
+
+
+myApp.thirdScroll = () =>{
+    $(".pair").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".showWine").offset().top
+            },
+            'slow');
+    });
+}
+
+
+
+
+
 myApp.getMoreResults = (query) =>{
     $('.next').click(function (e) { 
         e.preventDefault();
@@ -33,6 +65,7 @@ myApp.getMoreResults = (query) =>{
 
 myApp.callApi = (query) => { 
     myApp.getMoreResults(query);
+    myApp.firstScroll();
 
     $.ajax({
         url: endpoint,
@@ -47,6 +80,8 @@ myApp.callApi = (query) => {
             requirePictures: true,
             maxResult: 12,
             start: 10,
+            allowedIngredient: 'chicken',
+            
         }
     }).then(data => {
         myApp.displayRecipes(data);
@@ -54,6 +89,7 @@ myApp.callApi = (query) => {
 };
 
 myApp.callSecondApi = () => {
+    myApp.secondScroll();
     $('.recipeBox').click(function (e) {
         id = $(this);
         id = id[0].dataset.id;
@@ -98,28 +134,29 @@ myApp.displayRecipes = (data) => {
 myApp.getFullRecipeHTML = (info) => {
     $('.listItems').empty();
     const recipeHTML =
-        `
-            <div class="showRecipeTitle">
-                <h2>${info.name}</h2>
-            </div>
-            <div class="recipeImg">
-                <img src="${info.images[0].hostedLargeUrl}">
-            </div>
-            <div class = "servings&time">
-                <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
-                <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
-            </div>
-        <div class="linkToRecipe">
-            <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
-        </div>
-        <div class="pairWithWine">
-            <button class="pair">Pair Me!</button>
-        </div>`;
-    $('.showRecipe').empty();
-    $('.showRecipe').prepend(recipeHTML);
-    const ingredientList = info.ingredientLines.map(foodItem => foodItem);
-    ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
-    myApp.displayWine(info);
+    `
+    <div class="showRecipeTitle">
+        <h2>${info.name}</h2>
+    </div>
+    <div class="recipeImg">
+        <img src="${info.images[0].hostedLargeUrl}">
+    </div>
+    <div class = "servings&time">
+        <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
+        <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
+    </div>
+    <div class="linkToRecipe">
+        <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
+    </div>
+    <div class="pairWithWine">
+        <button class="pair">Pair Me!</button>
+    </div>`;
+            $('.showRecipe').empty();
+            $('.showRecipe').prepend(recipeHTML);
+            const ingredientList = info.ingredientLines.map(foodItem => foodItem);
+            ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
+            myApp.displayWine(info);
+            myApp.thirdScroll();
 };
 
 myApp.displayWine = (info) => {
@@ -144,7 +181,7 @@ myApp.displayWine = (info) => {
                         <h3>${item.name}</h3>
                         <p>${item.desc}</p>
                         <span>${item.price}</span>
-                        <a href="${item.link}">LCBO Page</a>
+                        <a href="${item.link}">LCBO</a>
                     </div>
                     <div class="wineImg">
                         <img src="${item.image}">

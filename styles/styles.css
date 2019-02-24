@@ -439,7 +439,8 @@ section.red {
   background: #802512;
 }
 
-.singleRecipeContainer {
+.showRecipe {
+  text-align: center;
   background: beige;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -455,10 +456,6 @@ section.red {
           box-shadow: 10px 10px black;
   font-family: "Lato", sans-serif;
   margin-top: 5%;
-}
-
-.showRecipe {
-  text-align: center;
 }
 
 .showRecipe .recipeImg {
@@ -521,6 +518,19 @@ section.red {
   color: #7CFC00;
 }
 
+.showWine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .wine {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -530,6 +540,8 @@ section.red {
       -ms-flex-direction: row;
           flex-direction: row;
   width: 75%;
+  border: 9px solid black;
+  border-radius: 90px 0;
 }
 
 .wine .wineDesc {
@@ -545,6 +557,9 @@ section.red {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .wine .wineDesc h3 {
@@ -555,8 +570,22 @@ section.red {
   font-family: "Lato", sans-serif;
 }
 
+.wine .wineDesc a {
+  text-decoration: none;
+  border: 1px solid black;
+  width: 34%;
+  text-align: center;
+  background: #802512;
+  font-family: "Lato", sans-serif;
+  color: white;
+  margin: 5%;
+  padding: 11px 5px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
 .wine .wineImg {
-  width: 40%;
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,14 +1,10 @@
 
-// RECIPES LIST section//
-
-// 'Previous' and 'Next' buttons //
 
 .navButtons {
     text-align: center;
     padding: 50px;
 }
 
-// Recipes //
 
 .recipesContainer {
     margin: 0 auto;
@@ -75,23 +71,22 @@
 // SELECTED RECIPE section//
 section.red{
     background:$primary;
-}
-.singleRecipeContainer {
-    background: beige;
-    display: flex;
-    flex-direction: column;
-    border:3px solid black;
-    border-radius: 20px;
-    padding:10px;
-    box-shadow:10px 10px black;
-    font-family: $secondFont;
-    margin-top:5%;
 
 }
+
 
 
 .showRecipe {
         text-align: center;
+        background: beige;
+        display: flex;
+        flex-direction: column;
+        border:3px solid black;
+        border-radius: 20px;
+        padding:10px;
+        box-shadow:10px 10px black;
+        font-family: $secondFont;
+        margin-top:5%;
 
 
         .recipeImg {
