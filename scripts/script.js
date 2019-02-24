@@ -18,8 +18,9 @@ myApp.callApi = (query) => {
         data: {
             q: query,
             requirePictures: true,
-            maxResult: 12,
+            maxResult: 3,
             start: 1
+        
         }
     }).then(data => {
         myApp.displayRecipes(data);
@@ -52,26 +53,35 @@ myApp.getValue = (value) => {
         e.preventDefault();
         value = $(this).val();
         myApp.callApi(value);
+    
+        $('.scroll').click(function (e) {
+            e.preventDefault();
+            $('body,html').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 500);
+        });
     });
 };
 
 myApp.displayRecipes = (data) => {
     $('.recipes').empty();
     data.matches.forEach(recipe => {
-        const recipeHTML = `<div data-id="${recipe.id}" class="recipeBox">
-                            <a>${recipe.recipeName}</a>
-                            <img src="${recipe.smallImageUrls[0]}">
+        const recipeHTML = `<div data-id="${recipe.id}" class="recipeBox"> 
+                                <figure>
+                                    <img src="${recipe.smallImageUrls[0]}">
+                                    <figcaption>${recipe.recipeName}</figcaption>
+                                </figure>
                             </div>`;
-                            $('.recipes').append(recipeHTML);
-        });
+        $('.recipes').append(recipeHTML);
+    });
     myApp.callSecondApi();
 };
 
 myApp.getFullRecipeHTML = (info) => {
     $('.listItems').empty();
     const recipeHTML =
-        `<div class="showRecipe">
-            <div class="showRecipeTitle>
+        `
+            <div class="showRecipeTitle">
                 <h2>${info.name}</h2>
             </div>
             <div class="recipeImg">
@@ -80,9 +90,8 @@ myApp.getFullRecipeHTML = (info) => {
             <div class = "servings&time">
                 <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
                 <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
-             </div>
-        </div>
-            <div class="linkToRecipe">
+            </div>
+        <div class="linkToRecipe">
             <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
         </div>
         <div class="pairWithWine">
@@ -133,8 +142,10 @@ myApp.displayWine = (info) => {
 myApp.getNextResults = () => {
     $('.next').click(function (e) {
         e.preventDefault();
-
+        // myApp.callApi(query);
     });
+
+    // return myApp.getNextResults(query);
 };
 
 myApp.init = () => {

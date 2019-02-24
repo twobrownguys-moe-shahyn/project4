@@ -1,3 +1,22 @@
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    background-color: white;
+    font-weight: bold;
+    color: black;
+    border: 3px solid black;
+    box-shadow: 11px -3px black;
+
+}
+
+button:hover {
+    background: purple;
+    color: white;
+}
+
+
 header {
     min-height: 100vh;
     max-width: 100%;
@@ -5,33 +24,41 @@ header {
     background-color: $primary;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
+    align-content: center;
+
+    h1{
+        font-family: $headerFont;
+        font-size: 4rem;
+    }
+    h2{
+        font-family: $secondFont;
+    }
 }
 
 .appDescription {
-    width: 80%;
-    text-align: center;
-    margin: 0 auto;
+    /* border:1px solid black; */
     color: $secondary;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+
+    p{
+        text-align: center;
+    }
 }
 
-.foodItemChoices {
-    text-align: center;
 
 
     .buttonList {
-        width: 50%;
+        width: 100%;
+       /*  border: 1px solid green */;
+        width:80%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: center;
+        justify-content: space-around;
+       
     }
 
-    button {
-        padding: 5px;
-        border-radius: 20px;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-    }
-}
 

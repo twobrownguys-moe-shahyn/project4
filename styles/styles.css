@@ -160,13 +160,7 @@ html {
   font-size: 125%; }
 
 body {
-  font-size: 1rem;
   margin: 0; }
-
-h1,
-h2,
-h3 {
-  letter-spacing: 2; }
 
 p {
   line-height: 1.6; }
@@ -174,14 +168,43 @@ p {
 img {
   max-width: 100%; }
 
+section {
+  margin: 5% 0; }
+
 .innerWrapper {
-  width: 100%;
+  width: 80%;
   max-width: 1600px;
   padding: 1px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
 
 .bold {
   font-weight: bold; }
+
+button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+  border: 3px solid black;
+  -webkit-box-shadow: 11px -3px black;
+  box-shadow: 11px -3px black; }
+
+button:hover {
+  background: purple;
+  color: white; }
 
 header {
   min-height: 100vh;
@@ -195,36 +218,43 @@ header {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
+  -ms-flex-line-pack: center;
+  align-content: center; }
+  header h1 {
+    font-family: "Satisfy", cursive;
+    font-size: 4rem; }
+  header h2 {
+    font-family: "Lato", sans-serif; }
 
 .appDescription {
-  width: 80%;
-  text-align: center;
-  margin: 0 auto;
-  color: #f0efed; }
-
-.foodItemChoices {
-  text-align: center; }
-  .foodItemChoices .buttonList {
-    width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+  /* border:1px solid black; */
+  color: #f0efed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 80%; }
+  .appDescription p {
     text-align: center; }
-  .foodItemChoices button {
-    padding: 5px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-size: 0.8rem; }
+
+.buttonList {
+  width: 100%;
+  /*  border: 1px solid green */
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
 
 .navButtons {
   text-align: center;
@@ -243,7 +273,47 @@ header {
   flex-flow: row wrap;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
-  justify-content: flex-start; }
+  justify-content: flex-start;
+  margin: 0 auto; }
+  .recipes .recipeBox {
+    border: 1px solid black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .recipes figure {
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background: whitesmoke;
+    -webkit-box-shadow: 10px 10px black;
+    box-shadow: 10px 10px black;
+    width: 175px;
+    cursor: pointer; }
+  .recipes figcaption {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 10px;
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    color: #802512; }
   .recipes .recipeBox {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -265,24 +335,75 @@ header {
   width: 100%;
   border-radius: 20px; }
 
+section.red {
+  background: #802512; }
+
 .singleRecipeContainer {
-  background: beige; }
+  background: beige;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  -webkit-box-shadow: 10px 10px black;
+  box-shadow: 10px 10px black;
+  font-family: "Lato", sans-serif;
+  margin-top: 5%; }
 
 .showRecipe {
   text-align: center; }
   .showRecipe .recipeImg {
     width: 50%;
-    border-radius: 20px; }
+    border-radius: 20px;
+    margin: 0 auto; }
+    .showRecipe .recipeImg img {
+      border-radius: 20px; }
 
 .recipeDetails {
-  padding-left: 50px; }
-
-li {
-  padding: 2px;
-  width: 100%; }
-
-li:nth-child(2n) {
-  list-style-type: none; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: black;
+  font-weight: 700;
+  font-family: "Satisfy", cursive;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #f5f5f5;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  background-image: url(../assets/texturedPaper.png);
+  padding: 0; }
+  .recipeDetails h3 {
+    font-size: 2rem;
+    margin-bottom: 0; }
+  .recipeDetails ul {
+    padding: 0; }
+  .recipeDetails li {
+    list-style-type: none;
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+    font-size: 1.2rem;
+    padding-right: 15px; }
+  .recipeDetails li:nth-child(2n-1)::before {
+    font-size: 0.7rem;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f5a7";
+    position: relative;
+    bottom: 4px;
+    padding: 0 20px 0 10px;
+    color: #7CFC00; }
 
 footer {
   background-color: black; }

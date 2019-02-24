@@ -18,6 +18,39 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    margin:0 auto;
+
+    .recipeBox {
+        
+        border:1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        figure{
+            border:3px solid black;
+            border-radius:20px;
+            padding:10px;
+            background:whitesmoke;
+            box-shadow:10px 10px black;
+            width:175px;
+            cursor: pointer;
+        }
+
+        figcaption{
+            text-align:center;
+            font-size:0.8rem;
+            padding:10px;
+            height:80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius:20px;
+            font-family: $secondFont;
+            font-weight: bold;
+            color:$primary;
+        }
 
     .recipeBox {
         display: flex;
@@ -39,9 +72,20 @@
 
 
 // SELECTED RECIPE section//
-
+section.red{
+    background:$primary;
+}
 .singleRecipeContainer {
     background: beige;
+    display: flex;
+    flex-direction: column;
+    border:3px solid black;
+    border-radius: 20px;
+    padding:10px;
+    box-shadow:10px 10px black;
+    font-family: $secondFont;
+    margin-top:5%;
+
 }
 
 .showRecipe {
@@ -50,20 +94,65 @@
         .recipeImg {
             width: 50%;
             border-radius: 20px;
+            margin: 0 auto;
+
+            img {
+                border-radius:20px;
+            }
         }
     }
+
 .recipeDetails {
-    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    color:black;
+    font-weight: 700;
+    font-family: $headerFont;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    background-image: url(../assets/texturedPaper.png);
+    padding: 0;
+
+    h3 {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+    
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style-type: none;
+        margin: 0 auto;
+        width: 100%;
+        text-align: left;
+        font-size: 1.2rem;
+       padding-right: 15px;
+
+ 
+    }
+
+    li:nth-child(2n-1)::before {
+        font-size: 0.7rem;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f5a7";
+        position: relative;
+        bottom: 4px;
+        padding: 0 20px 0 10px;
+        color: #7CFC00;
+    }
+
 }
 
-li {
-    padding: 2px;
-    width: 100%;
-}
 
-li:nth-child(2n) {
-    list-style-type: none;
-}
+
+
 
 
 //PAIRED WINES section//
