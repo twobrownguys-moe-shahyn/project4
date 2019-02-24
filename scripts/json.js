@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 const wines = {
-    reds: [
+    wine: [
         wineOne = {
             name: 'Prélude du Château Haut-Pezat 2014',
             id: 1,
@@ -29,9 +29,7 @@ const wines = {
             link: 'http://www.lcbo.com/lcbo/product/chateau-haut-brion-2000/578716#.XG3P4-hKjIU',
             image: 'http://www.lcbo.com/content/dam/lcbo/products/578716.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
         },
-    ],
-    whites: [
-        wineOne = {
+        wineFour = {
             name: 'Louis Jadot Chablis 2015',
             id: 4,
             price: '$',

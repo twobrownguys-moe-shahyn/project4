@@ -1,0 +1,33 @@
+.wine{
+    display: flex;
+    flex-direction: row;
+    width:75%;
+
+
+    .wineDesc{
+        display:flex;
+        flex-direction: column;
+        width:60%;
+        justify-content: center;
+        text-align: center;
+        
+        h3{
+            font-family: $headerFont;
+        }
+        p{
+            font-family: $secondFont;
+        }
+    }
+
+    .wineImg{
+        width:40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    
+
+        img{
+            width:100%;
+        }
+    }
+}
