@@ -142,7 +142,6 @@ myApp.init = () => {
     myApp.getValue();
     myApp.getNextResults();
 
-
 };
 
 

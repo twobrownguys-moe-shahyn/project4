@@ -3,12 +3,13 @@ header {
     max-width: 100%;
     height: auto;
     background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .appDescription {
-    width: 50%;
-    position: relative;
-    top: 220px;
+    width: 80%;
     text-align: center;
     margin: 0 auto;
     color: $secondary;
@@ -16,14 +17,14 @@ header {
 
 .foodItemChoices {
     text-align: center;
-    position: relative;
-    top: 220px;
-  
+
 
     .buttonList {
-        width: 100%;
-        padding: 20px;
-        padding-right: 20px;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
     }
 
     button {
