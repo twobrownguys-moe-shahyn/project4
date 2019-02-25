@@ -36,22 +36,45 @@ const wines = {
             desc: 'Chablis are always a true crowd pleaser! Louis Jadot is one of the oldest winemakers and a true safe bet! ',
             pairing: 'salmon',
             link: 'http://www.lcbo.com/lcbo/product/louis-jadot-chablis-2015/468751#.XG3RXOhKjIU',
+            image: 'http://www.lcbo.com/content/dam/lcbo/products/468751.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
+            
         },
-        wineTwo = {
+        wineFive = {
             name: 'Domaine Bonnard Sancerre 2016',
             id: 5,
             price: '$$',
             desc: 'Sancerre is a royal wine. It used the be the favorite wine of french aristocrats!',
-            pairing: 'salad',
+            pairing: 'tuna',
             link: 'http://www.lcbo.com/lcbo/product/domaine-bonnard-sancerre-2016/140525#.XG3SLehKjIU',
+            image: 'http://www.lcbo.com/content/dam/lcbo/products/140525.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
         },
-        wineThree = {
+        wineSix = {
             name: 'Stags Leap Winery Chardonnay 2016',
             id: 6,
             price: '$$$',
             desc: 'heavy dishes require heavy wines and nobody does it better than Stags leap! This wine is strong enough to accompany a heavy butter sauce',
             pairing: 'chicken',
             link: 'http://www.lcbo.com/lcbo/product/stags-leap-winery-chardonnay-2016/655381#.XG3Tp-hKjIU',
+            image: 'http://www.lcbo.com/content/dam/lcbo/products/655381.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
         },
+        wineSeven = {
+            name: 'Yalumba Y Series Viognier',
+            id: 7,
+            price: '$',
+            desc: 'Parfumed, Aromatic and full of flavour! Impress your hipster friends with this great value wine',
+            pairing: 'tofu',
+            link: 'http://www.lcbo.com/lcbo/product/yalumba-y-series-viognier/470062#.XHNqNOhKj3Q',
+            image: 'http://www.lcbo.com/content/dam/lcbo/products/470062.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
+        },
+        wineEight = {
+            name: 'Macon Villages Montesard 2016',
+            id: 8,
+            price: '$$',
+            desc: `Full bodied, buttery, oaky! Brace yourself, this wine will knock you off your feet!`,
+            pairing: 'tofu',
+            link: 'http://www.lcbo.com/lcbo/product/macon-villages-montesard-2016/483353#.XHNrKehKj3Q',
+            image: `http://www.lcbo.com/content/dam/lcbo/products/483353.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg`,
+        },
+
     ]
 };

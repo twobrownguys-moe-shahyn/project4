@@ -17,7 +17,7 @@ myApp.firstScroll = () =>{
 myApp.secondScroll = () =>{
     $(".recipeBox").click(function () {
         $('html,body').animate({
-                scrollTop: $(".singleRecipeContainer").offset().top
+                scrollTop: $(".showRecipe").offset().top
             },
             'slow');
     });
@@ -32,6 +32,16 @@ myApp.thirdScroll = () =>{
             'slow');
     });
 }
+myApp.lastScroll = () =>{
+    $(".top").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".button").offset().top
+            },
+            'slow');
+    });
+
+}
+
 
 
 
@@ -46,6 +56,8 @@ myApp.getMoreResults = (query) =>{
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
     
+        }).catch( data =>{
+            alert('Sorry No more items!')
         })
         
     });
@@ -58,6 +70,8 @@ myApp.getMoreResults = (query) =>{
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
     
+        }).catch( data =>{
+            alert('Sorry No more items!')
         })
         
     });
@@ -85,7 +99,15 @@ myApp.callApi = (query) => {
         }
     }).then(data => {
         myApp.displayRecipes(data);
-    });
+    }).catch(data =>{
+        const failHTML = 
+        `
+        <div class="failed">
+            <h1>Sorry! Something went wrong</h1>
+        </div>
+        `;
+        $('.recipes').append(failHTML);
+    })
 };
 
 myApp.callSecondApi = () => {
@@ -105,7 +127,16 @@ myApp.callSecondApi = () => {
             }
         }).then(info => {
             myApp.getFullRecipeHTML(info);
-        });
+        }).catch(data =>{
+            const failHTML =
+                `
+            <div class="failed">
+                <h1>Sorry! Something went wrong</h1>
+            </div>
+            `;
+            $('.showRecipe').append(failHTML);
+
+        })
     });
 };
 
@@ -135,23 +166,22 @@ myApp.getFullRecipeHTML = (info) => {
     $('.listItems').empty();
     const recipeHTML =
     `
-    <div class="showRecipeTitle">
+    <div class="theRecipe">
         <h2>${info.name}</h2>
-    </div>
-    <div class="recipeImg">
-        <img src="${info.images[0].hostedLargeUrl}">
-    </div>
-    <div class = "servings&time">
+        <div class="recipeImg">
+            <img src="${info.images[0].hostedLargeUrl}">
+        </div>
         <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
         <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
+        <div class="pairWithWine">
+            <button class="pair">Pair Me!</button>
+        </div>
     </div>
-    <div class="linkToRecipe">
-        <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
-    </div>
-    <div class="pairWithWine">
-        <button class="pair">Pair Me!</button>
-    </div>`;
+    `;
             $('.showRecipe').empty();
+            $('.listIngredients').empty();
+            $('.listIngredients').prepend('<h3>Ingredients</h3>')
+            $('.listIngredients').append('<button class="pair">Pair Me!</button>');
             $('.showRecipe').prepend(recipeHTML);
             const ingredientList = info.ingredientLines.map(foodItem => foodItem);
             ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
@@ -182,6 +212,7 @@ myApp.displayWine = (info) => {
                         <p>${item.desc}</p>
                         <span>${item.price}</span>
                         <a href="${item.link}">LCBO</a>
+                        <button class="top">Back to top</button>
                     </div>
                     <div class="wineImg">
                         <img src="${item.image}">
@@ -189,6 +220,7 @@ myApp.displayWine = (info) => {
                 </div>`;
             $('.showWine').empty();
             $('.showWine').append(wineHTML);
+            myApp.lastScroll();
         });
     });
 };
