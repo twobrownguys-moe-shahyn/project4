@@ -227,7 +227,7 @@ myApp.displayWine = (info) => {
                         <button class="top">Back to top</button>
                     </div>
                     <div class="wineImg">
-//                         <img src="${item.image}">
+                        <img src="${item.image}">
                     </div>
                 </div>`;
             $('.showWine').empty();
