@@ -4,7 +4,7 @@ const apiId = `a9b9b7a2`;
 const apiKey = `5944b972a9f51cf045008ace83d83548`;
 const endpoint = `https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
 
-
+    // AUTO SCROLL FUNCTIONS
 myApp.firstScroll = () =>{
     $(".button").click(function () {
         $('html,body').animate({
@@ -46,7 +46,7 @@ myApp.lastScroll = () =>{
 
 
 
-
+// FETCHES MORE RESULTS IN THE QUERY SELECTIONS
 myApp.getMoreResults = (query) =>{
     $('.next').click(function (e) { 
         e.preventDefault();
@@ -77,6 +77,8 @@ myApp.getMoreResults = (query) =>{
     });
 }
 
+
+// CALLS THE FIRST API AND DISPLAYS THE ITEMS
 myApp.callApi = (query) => { 
     myApp.getMoreResults(query);
     myApp.firstScroll();
@@ -110,6 +112,8 @@ myApp.callApi = (query) => {
     })
 };
 
+// CALLS THE SECOND API USING THE  ID OF THE FIRST API
+
 myApp.callSecondApi = () => {
     myApp.secondScroll();
     $('.recipeBox').click(function (e) {
@@ -140,6 +144,8 @@ myApp.callSecondApi = () => {
     });
 };
 
+// GETS A VALUE FROM THE BUTTONS
+
 myApp.getValue = (value) => {
     $('.button').click(function (e) {
         e.preventDefault();
@@ -148,6 +154,8 @@ myApp.getValue = (value) => {
     });
 };
 
+
+// USES THE DATA FROM THE API TO DISPLAY THE RECIPES
 myApp.displayRecipes = (data) => {
     $('.recipes').empty();
     data.matches.forEach(recipe => {
@@ -161,6 +169,8 @@ myApp.displayRecipes = (data) => {
     });
     myApp.callSecondApi();
 };
+
+// USES THE DATA FROM THE SECOND API CALL TO DISPLAY THE CHOSEN DISH
 
 myApp.getFullRecipeHTML = (info) => {
     $('.listItems').empty();
@@ -189,6 +199,8 @@ myApp.getFullRecipeHTML = (info) => {
             myApp.thirdScroll();
 };
 
+
+// GETS THE PROTEIN AND COMPARES IT WITH THE WINE JSON OBJECT AND DISPLAYS THE WINE
 myApp.displayWine = (info) => {
     $('.pair').click(function (e) {
         e.preventDefault();
@@ -215,7 +227,7 @@ myApp.displayWine = (info) => {
                         <button class="top">Back to top</button>
                     </div>
                     <div class="wineImg">
-                        <img src="${item.image}">
+//                         <img src="${item.image}">
                     </div>
                 </div>`;
             $('.showWine').empty();
@@ -224,6 +236,8 @@ myApp.displayWine = (info) => {
         });
     });
 };
+
+// INITS THE FUNCTIONS
 
 myApp.init = () => {
     myApp.callApi();
