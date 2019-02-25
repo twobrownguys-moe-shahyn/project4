@@ -2,7 +2,7 @@ const myApp = {};
 let start = 10;
 const apiId = `a9b9b7a2`;
 const apiKey = `5944b972a9f51cf045008ace83d83548`;
-const endpoint = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
+const endpoint = `https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
 
 
 myApp.firstScroll = () =>{
@@ -51,7 +51,7 @@ myApp.getMoreResults = (query) =>{
     $('.next').click(function (e) { 
         e.preventDefault();
         start = start + 10;
-        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        fetch(`https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
         &maxResult=12&start=${start}`)
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
@@ -65,7 +65,7 @@ myApp.getMoreResults = (query) =>{
     $('.previous').click(function (e) { 
         e.preventDefault();
         start = start - 10;
-        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        fetch(`https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
         &maxResult=12&start=${start}`)
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
@@ -116,7 +116,7 @@ myApp.callSecondApi = () => {
         id = $(this);
         id = id[0].dataset.id;
         e.preventDefault();
-        const getTheRecipe = `http://api.yummly.com/v1/api/recipe/${id}?_app_id=${apiId}&_app_key=${apiKey}`;
+        const getTheRecipe = `https://api.yummly.com/v1/api/recipe/${id}?_app_id=${apiId}&_app_key=${apiKey}`;
         $.ajax({
             url: getTheRecipe,
             method: 'GET',
