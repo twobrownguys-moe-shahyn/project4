@@ -21,35 +21,37 @@
             <div class="appDescription">
                 <h1>Wine and Dine Me</h1>
                 <h2>The Wine-Pairing App</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque quam, veniam impedit ducimus
-                    temporibus
-                    id recusandae vero quia reiciendis voluptate eius perspiciatis eveniet cupiditate debitis, commodi
-                    deserunt, neque non tempora!
-                </p>
-            </div>
-            <div class="buttonList">
-<button class="button" value='chicken'><a class="scroll" href="#recipesListSection">chicken</a></button>
-                <button class="button" value='beef'>beef</button>
-                <button class="button" value='lamb'>lamb</button>
-                <button class="button" value='pork'>pork</button>
-                <button class="button" value='salmon'>salmon</button>
-                <button class="button" value='tuna'>tuna</button>
-                <button class="button" value='calamari'>calamari</button>
-                <button class="button" value='tofu'>tofu</button>
+                <p>You choose the dish! We choose the wine!</p>
             </div>
         </div>
     </header>
     <main>
+        <section>
+            <div class="innerWrapper">
+                <div class="buttonList">
+                    <div class="row">
+                        <button class="button" value='chicken'><a href="#recipesListSection">chicken</a></button>
+                        <button class="button" value='beef'>beef</button>
+                        <button class="button" value='lamb'>lamb</button>
+                        <button class="button" value='pork'>pork</button>
+                    </div>
+                    <div class="row">
+                        <button class="button" value='salmon'>salmon</button>
+                        <button class="button" value='tuna'>tuna</button>
+                        <button class="button" value='calamari'>calamari</button>
+                        <button class="button" value='tofu'>tofu</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="recipesListSection" id="recipesListSection">
             <div class="innerWrapper">
                 <div class="navButtons">
-                    <button class="previousPage" value='previousPage'>Previous Page</button>
+                    <button class="previous">Previous Page</button>
                     <button class="next" value='next'>Next Page</button>
                 </div>
                 <div class="recipesContainer">
-                    <div class="recipes">
-
-                    </div>
+                    <div class="recipes"></div>
                 </div>
             </div>
         </section>
@@ -71,8 +73,10 @@
             <div class="link&pairButtons"></div>
         </section>
         <section>
-            <div class="showWine">
+            <div class="innerWrapper">
+                <div class="showWine">
 
+                </div>
             </div>
         </section>
     </main>

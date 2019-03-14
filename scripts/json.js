@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 const wines = {
-    reds: [
+    wine: [
         wineOne = {
             name: 'Prélude du Château Haut-Pezat 2014',
             id: 1,
@@ -14,7 +14,7 @@ const wines = {
             name: 'Chateau Arnauld 2012',
             id: 2,
             price: '$$',
-            desc: 'One of the true legends! A sommeliers favorite because of the complexity and long finish!',
+            desc: `One of the true legends! A sommelier's favorite because of the complexity and long finish!`,
             pairing: 'Beef',
             link: 'http://www.lcbo.com/lcbo/product/chateau-arnauld-2012/335918#.XG3PbuhKjIU',
             image: 'http://www.lcbo.com/content/dam/lcbo/products/335918.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
@@ -29,9 +29,7 @@ const wines = {
             link: 'http://www.lcbo.com/lcbo/product/chateau-haut-brion-2000/578716#.XG3P4-hKjIU',
             image: 'http://www.lcbo.com/content/dam/lcbo/products/578716.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
         },
-    ],
-    whites: [
-        wineOne = {
+        wineFour = {
             name: 'Louis Jadot Chablis 2015',
             id: 4,
             price: '$',

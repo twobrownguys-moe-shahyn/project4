@@ -1,12 +1,47 @@
 /*jshint esversion: 6 */
 
 const myApp = {};
+let start = 10;
+let $scrollLink = $('.scroll');
 const apiId = `a9b9b7a2`;
 const apiKey = `5944b972a9f51cf045008ace83d83548`;
 const endpoint = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
 
+$('.button').click(function (e) {
+    e.preventDefault();
 
-myApp.callApi = (query) => {
+    $('html, body').animate({
+        scrollTop: $(".recipesContainer").offset().top
+    }, 500);
+});
+
+myApp.getMoreResults = (query) =>{
+    $('.next').click(function (e) { 
+        e.preventDefault();
+        start = start + 10;
+        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        &maxResult=12&start=${start}`)
+        .then(state => state.json()).then(data => {
+            myApp.displayRecipes(data);
+        });
+    });
+    
+    $('.previous').click(function (e) { 
+        e.preventDefault();
+        start = start - 10;
+        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        &maxResult=12&start=${start}`)
+        .then(state => state.json()).then(data => {
+            myApp.displayRecipes(data);
+    
+        });
+        
+    });
+};
+
+myApp.callApi = (query) => { 
+    myApp.getMoreResults(query);
+
     $.ajax({
         url: endpoint,
         method: 'GET',
@@ -18,9 +53,8 @@ myApp.callApi = (query) => {
         data: {
             q: query,
             requirePictures: true,
-            maxResult: 3,
-            start: 1
-        
+            maxResult: 12,
+            start: 10,
         }
     }).then(data => {
         myApp.displayRecipes(data);
@@ -42,7 +76,6 @@ myApp.callSecondApi = () => {
                 'X-Yummly-App-Key': apiKey,
             }
         }).then(info => {
-            console.log(info);
             myApp.getFullRecipeHTML(info);
         });
     });
@@ -52,16 +85,10 @@ myApp.getValue = (value) => {
     $('.button').click(function (e) {
         e.preventDefault();
         value = $(this).val();
-        myApp.callApi(value);
-    
-        $('.scroll').click(function (e) {
-            e.preventDefault();
-            $('body,html').animate({
-                scrollTop: $(this.hash).offset().top
-            }, 500);
+        myApp.callApi(value);       
         });
-    });
-};
+
+    };
 
 myApp.displayRecipes = (data) => {
     $('.recipes').empty();
@@ -95,23 +122,20 @@ myApp.getFullRecipeHTML = (info) => {
             <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
         </div>
         <div class="pairWithWine">
-            <button>Pair Me!</button>
+            <button class="pair">Pair Me!</button>
         </div>`;
     $('.showRecipe').empty();
     $('.showRecipe').prepend(recipeHTML);
     const ingredientList = info.ingredientLines.map(foodItem => foodItem);
     ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
-
-    // const getFullRecipeButtons = 
-
-    // $('.link&pairButtons').append(getFullRecipeButtons);
+    myApp.displayWine(info);
 };
 
 myApp.displayWine = (info) => {
     $('.pair').click(function (e) {
         e.preventDefault();
         const protein = info.name;
-        const redWines = wines.reds;
+        const redWines = wines.wine;
         const filteredOption = redWines.filter((wine) => {
             if (protein.toLowerCase().includes(wine.pairing.toLowerCase())) {
                 return true;
@@ -125,13 +149,15 @@ myApp.displayWine = (info) => {
         filteredOption.forEach(item => {
             const wineHTML =
                 `<div class="wine">
-                    <h3>${item.name}</h3>
-                    <p>${item.desc}</p>
-                    <span>${item.price}</span>
+                    <div class="wineDesc">
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                        <span>${item.price}</span>
+                        <a href="${item.link}">LCBO Page</a>
+                    </div>
                     <div class="wineImg">
                         <img src="${item.image}">
                     </div>
-                    <a href="${item.link}">LCBO Page</a>
                 </div>`;
             $('.showWine').empty();
             $('.showWine').append(wineHTML);
@@ -139,19 +165,10 @@ myApp.displayWine = (info) => {
     });
 };
 
-myApp.getNextResults = () => {
-    $('.next').click(function (e) {
-        e.preventDefault();
-        // myApp.callApi(query);
-    });
-
-    // return myApp.getNextResults(query);
-};
-
 myApp.init = () => {
     myApp.callApi();
     myApp.getValue();
-    myApp.getNextResults();
+
 
 };
 
