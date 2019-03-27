@@ -5,7 +5,46 @@ let start = 10;
 let $scrollLink = $('.scroll');
 const apiId = `a9b9b7a2`;
 const apiKey = `5944b972a9f51cf045008ace83d83548`;
-const endpoint = `http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
+const endpoint = `https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&${apiKey}`;
+
+    // AUTO SCROLL FUNCTIONS
+myApp.firstScroll = () =>{
+    $(".button").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".recipesListSection").offset().top
+            },
+            'slow');
+    });
+}
+
+myApp.secondScroll = () =>{
+    $(".recipeBox").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".showRecipe").offset().top
+            },
+            'slow');
+    });
+}
+
+
+myApp.thirdScroll = () =>{
+    $(".pair").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".showWine").offset().top
+            },
+            'slow');
+    });
+}
+myApp.lastScroll = () =>{
+    $(".top").click(function () {
+        $('html,body').animate({
+                scrollTop: $(".button").offset().top
+            },
+            'slow');
+    });
+
+}
+
 
 $('.button').click(function (e) {
     e.preventDefault();
@@ -15,32 +54,44 @@ $('.button').click(function (e) {
     }, 500);
 });
 
+
+
+// FETCHES MORE RESULTS IN THE QUERY SELECTIONS
 myApp.getMoreResults = (query) =>{
     $('.next').click(function (e) { 
         e.preventDefault();
         start = start + 10;
-        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        fetch(`https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
         &maxResult=12&start=${start}`)
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
-        });
+    
+        }).catch( data =>{
+            alert('Sorry No more items!')
+        })
+        
     });
     
     $('.previous').click(function (e) { 
         e.preventDefault();
         start = start - 10;
-        fetch(`http://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
+        fetch(`https://api.yummly.com/v1/api/recipes?_app_id=${apiId}&_app_key=${apiKey}&q=${query}
         &maxResult=12&start=${start}`)
         .then(state => state.json()).then(data => {
             myApp.displayRecipes(data);
     
-        });
+        }).catch( data =>{
+            alert('Sorry No more items!')
+        })
         
     });
 };
 
+
+// CALLS THE FIRST API AND DISPLAYS THE ITEMS
 myApp.callApi = (query) => { 
     myApp.getMoreResults(query);
+    myApp.firstScroll();
 
     $.ajax({
         url: endpoint,
@@ -55,18 +106,31 @@ myApp.callApi = (query) => {
             requirePictures: true,
             maxResult: 12,
             start: 10,
+            allowedIngredient: 'chicken',
+            
         }
     }).then(data => {
         myApp.displayRecipes(data);
-    });
+    }).catch(data =>{
+        const failHTML = 
+        `
+        <div class="failed">
+            <h1>Sorry! Something went wrong</h1>
+        </div>
+        `;
+        $('.recipes').append(failHTML);
+    })
 };
 
+// CALLS THE SECOND API USING THE  ID OF THE FIRST API
+
 myApp.callSecondApi = () => {
+    myApp.secondScroll();
     $('.recipeBox').click(function (e) {
         id = $(this);
         id = id[0].dataset.id;
         e.preventDefault();
-        const getTheRecipe = `http://api.yummly.com/v1/api/recipe/${id}?_app_id=${apiId}&_app_key=${apiKey}`;
+        const getTheRecipe = `https://api.yummly.com/v1/api/recipe/${id}?_app_id=${apiId}&_app_key=${apiKey}`;
         $.ajax({
             url: getTheRecipe,
             method: 'GET',
@@ -77,9 +141,20 @@ myApp.callSecondApi = () => {
             }
         }).then(info => {
             myApp.getFullRecipeHTML(info);
-        });
+        }).catch(data =>{
+            const failHTML =
+                `
+            <div class="failed">
+                <h1>Sorry! Something went wrong</h1>
+            </div>
+            `;
+            $('.showRecipe').append(failHTML);
+
+        })
     });
 };
+
+// GETS A VALUE FROM THE BUTTONS
 
 myApp.getValue = (value) => {
     $('.button').click(function (e) {
@@ -90,6 +165,8 @@ myApp.getValue = (value) => {
 
     };
 
+
+// USES THE DATA FROM THE API TO DISPLAY THE RECIPES
 myApp.displayRecipes = (data) => {
     $('.recipes').empty();
     data.matches.forEach(recipe => {
@@ -104,33 +181,37 @@ myApp.displayRecipes = (data) => {
     myApp.callSecondApi();
 };
 
+// USES THE DATA FROM THE SECOND API CALL TO DISPLAY THE CHOSEN DISH
+
 myApp.getFullRecipeHTML = (info) => {
     $('.listItems').empty();
     const recipeHTML =
-        `
-            <div class="showRecipeTitle">
-                <h2>${info.name}</h2>
-            </div>
-            <div class="recipeImg">
-                <img src="${info.images[0].hostedLargeUrl}">
-            </div>
-            <div class = "servings&time">
-                <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
-                <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
-            </div>
-        <div class="linkToRecipe">
-            <a href="${info.sourceRecipeUrl}"><button>Give me the recipe</button></a>
+    `
+    <div class="theRecipe">
+        <h2>${info.name}</h2>
+        <div class="recipeImg">
+            <img src="${info.images[0].hostedLargeUrl}">
         </div>
+        <p><span class='bold'>Number of Servings:</span> ${info.numberOfServings}</p>
+        <p><span class='bold'> Total Prep Time:</span> ${info.totalTime}</p> 
         <div class="pairWithWine">
             <button class="pair">Pair Me!</button>
-        </div>`;
-    $('.showRecipe').empty();
-    $('.showRecipe').prepend(recipeHTML);
-    const ingredientList = info.ingredientLines.map(foodItem => foodItem);
-    ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
-    myApp.displayWine(info);
+        </div>
+    </div>
+    `;
+            $('.showRecipe').empty();
+            $('.listIngredients').empty();
+            $('.listIngredients').prepend('<h3>Ingredients</h3>')
+            $('.listIngredients').append('<button class="pair">Pair Me!</button>');
+            $('.showRecipe').prepend(recipeHTML);
+            const ingredientList = info.ingredientLines.map(foodItem => foodItem);
+            ingredientList.forEach(ingredient => $('.listIngredients').append(`<li>${ingredient}<li>`));
+            myApp.displayWine(info);
+            myApp.thirdScroll();
 };
 
+
+// GETS THE PROTEIN AND COMPARES IT WITH THE WINE JSON OBJECT AND DISPLAYS THE WINE
 myApp.displayWine = (info) => {
     $('.pair').click(function (e) {
         e.preventDefault();
@@ -153,7 +234,8 @@ myApp.displayWine = (info) => {
                         <h3>${item.name}</h3>
                         <p>${item.desc}</p>
                         <span>${item.price}</span>
-                        <a href="${item.link}">LCBO Page</a>
+                        <a href="${item.link}">LCBO</a>
+                        <button class="top">Back to top</button>
                     </div>
                     <div class="wineImg">
                         <img src="${item.image}">
@@ -161,9 +243,12 @@ myApp.displayWine = (info) => {
                 </div>`;
             $('.showWine').empty();
             $('.showWine').append(wineHTML);
+            myApp.lastScroll();
         });
     });
 };
+
+// INITS THE FUNCTIONS
 
 myApp.init = () => {
     myApp.callApi();

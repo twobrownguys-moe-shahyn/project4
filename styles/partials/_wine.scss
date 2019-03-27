@@ -1,7 +1,14 @@
+.showWine{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .wine{
     display: flex;
     flex-direction: row;
     width:75%;
+    border: 9px solid black;
+    border-radius: 90px 0;
 
     .wineDesc{
         display:flex;
@@ -9,6 +16,7 @@
         width:60%;
         justify-content: center;
         text-align: center;
+        align-items: center;
         
         h3{
             font-family: $headerFont;
@@ -16,10 +24,24 @@
         p{
             font-family: $secondFont;
         }
+        a{
+            text-decoration: none;
+            border: 1px solid black;
+            width: 34%;
+            text-align: center;
+            background: $primary;
+            font-family: $secondFont;
+            color: white;
+            margin: 5%;
+            padding: 11px 5px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
     }
 
     .wineImg{
-        width:40%;
+        width:30%;
         display: flex;
         flex-direction: column;
         justify-content: center;

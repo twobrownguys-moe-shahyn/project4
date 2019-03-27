@@ -1,0 +1,18 @@
+@media only screen and (max-width: 800px) {
+    .wine{
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .buttonList .column{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wine .wineDesc a{
+        width: 50%;
+    }
+}
